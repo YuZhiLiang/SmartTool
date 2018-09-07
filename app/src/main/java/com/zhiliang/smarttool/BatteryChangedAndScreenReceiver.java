@@ -58,8 +58,8 @@ public class BatteryChangedAndScreenReceiver extends BroadcastReceiver {
     private void doDialogRemind(Context context) {
         /*new AlertDialog.Builder(context).setMessage(R.string.low_battery_go_charge)
                 .setPositiveButton(R.string.confrim, null).create().show();*/
-        /*Intent intent = new Intent(context, RemindActivity.class);
+        Intent intent = new Intent(context, RemindActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);*/
+        context.startActivity(intent);
     }
 }
