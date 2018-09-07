@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SmartTool</string>
+    <string name="back_ground_live_channel_des">SmartTool的保活通知，关闭此通知SmartTool将无法正常使用</string>
+    <string name="smart_tool_above_ground">SmartTool正在运行</string>
 </resources>
