@@ -19,27 +19,6 @@ public class BackGroundService extends Service {
     private static final String TAG = BackGroundService.class.getSimpleName();
     private BackGroundBinder myIBinder = new BackGroundBinder();
 
-    /*final private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            *//*if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
-                BatteryInfo batteryInfo = new BatteryInfo(intent);
-                Intent updateIntent = new Intent(context, UpdateService.class);
-                updateIntent.setAction(UpdateService.ACTION_BATTERY_CHANGED);
-                batteryInfo.saveToIntent(updateIntent);
-                context.startService(updateIntent);
-            } else if (Intent.ACTION_BATTERY_LOW.equals(intent.getAction())) {
-                Intent updateIntent = new Intent(context, UpdateService.class);
-                updateIntent.setAction(UpdateService.ACTION_BATTERY_LOW);
-                context.startService(updateIntent);
-            } else if (Intent.ACTION_BATTERY_OKAY.equals(intent.getAction())) {
-                Intent updateIntent = new Intent(context, UpdateService.class);
-                updateIntent.setAction(UpdateService.ACTION_BATTERY_OKAY);
-                context.startService(updateIntent);
-            }*//*
-        }
-    };*/
-
     // 通信数据传输;由里面的方法实现
     public class BackGroundBinder extends Binder {
 
@@ -55,7 +34,7 @@ public class BackGroundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Intent intent2 = new Intent(this, MainActivity.class);
+        Intent intent2 = new Intent(this, SettingsActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent2, 0);
         NotificationHelp.creatBackGroundLiveNotification();//创建通道
         Notification notification = new NotificationCompat.Builder(this, NotificationHelp.BACK_GROUND_CHANNEL_ID)
@@ -74,17 +53,12 @@ public class BackGroundService extends Service {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
-        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         intentFilter.addAction(Intent.ACTION_USER_PRESENT);
-        /*intentFilter.addAction(Intent.ACTION_BATTERY_LOW);
-        intentFilter.addAction(Intent.ACTION_BATTERY_OKAY);*/
+        intentFilter.addAction(Intent.ACTION_BATTERY_LOW);
+        /*intentFilter.addAction(Intent.ACTION_BATTERY_OKAY);*/
         registerReceiver(BatteryChangedAndScreenReceiver.getINSTANCE(), intentFilter);
-        return super.onStartCommand(intent, flags, startId);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+//        return super.onStartCommand(intent, flags, startId);
+        return Service.START_STICKY;
     }
 
     // 与活动通信

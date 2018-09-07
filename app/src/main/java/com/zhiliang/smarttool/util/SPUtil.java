@@ -33,6 +33,18 @@ public class SPUtil {
         return mSharedPreferences.getInt(key, defValue);
     }
 
+    public void putLong(String key, long value) {
+        mSharedPreferences.edit().putLong(key, value).commit();
+    }
+
+    public long getLong(String key) {
+        return getLong(key, -1);
+    }
+
+    public long getLong(String key, long defValue) {
+        return mSharedPreferences.getLong(key, defValue);
+    }
+
     public void putString(String key, String value) {
         mSharedPreferences.edit().putString(key, value).commit();
     }
