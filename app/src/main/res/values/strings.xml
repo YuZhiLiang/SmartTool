@@ -78,13 +78,13 @@
         <item>吐司提醒</item>
     </string-array>
     <string-array name="pref_low_battery_remind_mode_values">
-        <item>0</item>
-        <item>1</item>
+        <item>@string/remind_mode_dialog</item>
+        <item>@string/remind_mode_toast</item>
     </string-array>
 
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silent</string>
 
-    <string name="pref_title_vibrate">声音和震动</string>
+    <string name="pref_title_vibrate">震动</string>
     <string name="confrim">确定</string>
 </resources>

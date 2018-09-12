@@ -1,17 +1,16 @@
 package com.zhiliang.smarttool.util;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.zhiliang.smarttool.STApplication;
 
 public class SPUtil {
     private static SPUtil INSTANCE = null;
     private SharedPreferences mSharedPreferences;
-    private String mSpName = "SmartToolSharedPreferences";
 
-    public SPUtil() {
-        mSharedPreferences = STApplication.getInstance().getSharedPreferences(mSpName, Context.MODE_PRIVATE);
+    private SPUtil() {
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(STApplication.getInstance());
     }
 
     public static SPUtil getINSTANCE() {
@@ -55,5 +54,17 @@ public class SPUtil {
 
     public String getString(String key, String defValue) {
         return mSharedPreferences.getString(key, defValue);
+    }
+
+    public void putBoolean(String key, boolean value) {
+        mSharedPreferences.edit().putBoolean(key, value).commit();
+    }
+
+    public boolean getBoolean(String key) {
+        return getBoolean(key, false);
+    }
+
+    private boolean getBoolean(String key, boolean defaultValue) {
+        return mSharedPreferences.getBoolean(key, defaultValue);
     }
 }
