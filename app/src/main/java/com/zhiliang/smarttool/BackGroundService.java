@@ -45,7 +45,6 @@ public class BackGroundService extends Service {
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round))
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setDefaults(Notification.DEFAULT_ALL)
                 .build();
         startForeground(BACK_GROUND_NOTIFICATION_ID, notification);
 

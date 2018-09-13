@@ -66,7 +66,7 @@ public class BatteryChangedAndScreenReceiver extends BroadcastReceiver {
         if (SPUtil.getINSTANCE().getBoolean(context.getString(R.string.low_battery_reminder_vibrate_key))) {
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             if (vibrator != null) {
-                vibrator.vibrate(2000);
+                vibrator.vibrate(500);
             }
         }
 
