@@ -64,7 +64,7 @@ public class SPUtil {
         return getBoolean(key, false);
     }
 
-    private boolean getBoolean(String key, boolean defaultValue) {
+    public boolean getBoolean(String key, boolean defaultValue) {
         return mSharedPreferences.getBoolean(key, defaultValue);
     }
 }

@@ -4,7 +4,7 @@
          when checked/unchecked. -->
     <SwitchPreference
         android:defaultValue="true"
-        android:key="low_battery_reminder_toggle"
+        android:key="@string/low_battery_reminder_toggle_key"
         android:title="@string/pref_title_low_battery_remind"/>
 
     <!-- Allows the user to choose a ringtone in the 'notification' category. -->
@@ -20,13 +20,13 @@
 
     <SwitchPreference
         android:defaultValue="false"
-        android:dependency="low_battery_reminder_toggle"
+        android:dependency="@string/low_battery_reminder_toggle_key"
         android:key="@string/low_battery_reminder_vibrate_key"
         android:title="@string/pref_title_vibrate"/>
 
     <ListPreference
         android:defaultValue="@string/default_remind_mode"
-        android:dependency="low_battery_reminder_toggle"
+        android:dependency="@string/low_battery_reminder_toggle_key"
         android:entries="@array/pref_low_battery_remind_mode_titles"
         android:entryValues="@array/pref_low_battery_remind_mode_values"
         android:key="@string/low_battery_remind_mode_key"

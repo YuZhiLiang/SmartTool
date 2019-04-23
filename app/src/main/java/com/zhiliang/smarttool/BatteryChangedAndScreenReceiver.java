@@ -30,6 +30,10 @@ public class BatteryChangedAndScreenReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        //是否开启低电量提醒
+        if (!SPUtil.getINSTANCE().getBoolean(context.getString(R.string.low_battery_reminder_toggle_key), true))
+            return;
+
         //最后一次提醒弹出的时间
         long lastRemindAlertTime = SPUtil.getINSTANCE().getLong(S_LAST_REMIND_ALERT_TIME_KEY, 0);
         if (System.currentTimeMillis() - lastRemindAlertTime <= TimeUnit.SECONDS.toMillis(S_DEFAULT_REMINDER_INTERVAL_TIME))
