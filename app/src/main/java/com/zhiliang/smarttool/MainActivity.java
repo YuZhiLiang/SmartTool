@@ -13,4 +13,8 @@ public class MainActivity extends AppCompatActivity {
         startService(new Intent(this, BackGroundService.class));
         //变基测试，第一次修改与yzl-develop
     }
+
+    public void init() {
+        //变基测试，第二次修改于master
+    }
 }
