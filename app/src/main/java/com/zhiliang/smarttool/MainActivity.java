@@ -11,5 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startService(new Intent(this, BackGroundService.class));
+        //变基测试，第一次修改与yzl-develop
     }
 }
