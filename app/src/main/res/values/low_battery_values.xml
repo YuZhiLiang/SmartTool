@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--是否开启低电量提醒的key-->
+    <string name="low_battery_reminder_toggle_key">low_battery_reminder_toggle_key</string>
+    <!--提醒方式的key-->
+    <string name="low_battery_remind_mode_key">low_battery_remind_mode_key</string>
+    <!--弹窗提醒方式-->
+    <string name="remind_mode_dialog">remind_mode_dialog</string>
+    <!--吐司提醒方式-->
+    <string name="remind_mode_toast">remind_mode_toast</string>
+    <!--默认提醒方式-->
+    <string name="default_remind_mode">@string/remind_mode_dialog</string>
+    <!--低电量提醒时震动是否开启的key-->
+    <string name="low_battery_reminder_vibrate_key">low_battery_reminder_vibrate</string>
+</resources>

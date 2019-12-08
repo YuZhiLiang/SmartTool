@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="ProgressBar_max" format="integer"/>
+
+    <declare-styleable name="ProgressBar">
+        <attr name="ProgressBar_max"/>
+    </declare-styleable>
+    <declare-styleable name="SeekBarPreference">
+        <attr name="SeekBarPreference_layout" format="integer"/>
+    </declare-styleable>
+</resources>
