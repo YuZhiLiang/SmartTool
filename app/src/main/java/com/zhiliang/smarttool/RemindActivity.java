@@ -1,6 +1,7 @@
 package com.zhiliang.smarttool;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
