@@ -8,11 +8,13 @@ import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.zhiliang.smarttool.util.NotificationHelp;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+
 
 public class BackGroundService extends Service {
     private static final int BACK_GROUND_NOTIFICATION_ID = 1;
