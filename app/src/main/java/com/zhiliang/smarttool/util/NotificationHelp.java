@@ -5,10 +5,11 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 
 import com.zhiliang.smarttool.R;
 import com.zhiliang.smarttool.STApplication;
+
+import androidx.annotation.RequiresApi;
 
 public class NotificationHelp {
     public static final String BACK_GROUND_CHANNEL_ID = "com.zhiliang.smarttool.background.live";
