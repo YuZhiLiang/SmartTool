@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.zhiliang.smarttool.BackGroundService;
 import com.zhiliang.smarttool.Constant;
-import com.zhiliang.smarttool.DataBean.MainFunction;
+import com.zhiliang.smarttool.DataBean.FunctionBean;
 import com.zhiliang.smarttool.R;
 import com.zhiliang.smarttool.databinding.ActivityMainBinding;
 
@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         startService(new Intent(this, BackGroundService.class));
-        MainFunctionAdapter mainFunctionAdapter = new MainFunctionAdapter();
-        ArrayList<MainFunction> mainFunctions = new ArrayList<>();
-        mainFunctions.add(new MainFunction("电量提醒", Constant.PATH_BATTERY_REMIND_MAIN_PAGE));
-        mainFunctions.add(new MainFunction("消息提醒", Constant.PATH_CHAT_REMIND_MAIN_PAGE));
-        mainFunctionAdapter.setList(mainFunctions);
+        FunctionAdapter mainFunctionAdapter = new FunctionAdapter();
+        ArrayList<FunctionBean> functionBeans = new ArrayList<>();
+        functionBeans.add(new FunctionBean("电量提醒", Constant.PATH_BATTERY_REMIND_MAIN_PAGE));
+        functionBeans.add(new FunctionBean("消息提醒", Constant.PATH_CHAT_REMIND_MAIN_PAGE));
+        mainFunctionAdapter.setList(functionBeans);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mBinding.recyclerView.setLayoutManager(layoutManager);
         mBinding.recyclerView.setAdapter(mainFunctionAdapter);

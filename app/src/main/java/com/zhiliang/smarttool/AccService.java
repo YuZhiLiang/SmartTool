@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.zhiliang.smarttool.publicpage.MainActivity;
 import com.zhiliang.smarttool.util.AccessibilityUtil;
+import com.zhiliang.smarttool.util.MyLogger;
 import com.zhiliang.smarttool.util.SPUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -86,13 +87,23 @@ public class AccService extends AccessibilityService {
         Log.i(TAG, "onServiceConnected: ");
         Toast.makeText(this, getString(R.string.chat_remind_des) + "开启了", Toast.LENGTH_LONG).show();
         // 服务开启，模拟两次返回键，退出系统设置界面（实际上还应该检查当前UI是否为系统设置界面，但一想到有些厂商可能篡改设置界面，懒得适配了...）
-        performGlobalAction(GLOBAL_ACTION_BACK);
+        /*performGlobalAction(GLOBAL_ACTION_BACK);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 performGlobalAction(GLOBAL_ACTION_BACK);
             }
-        }, DELAY_PAGE);
+        }, DELAY_PAGE);*/
+        MyLogger.yLog().w("onServiceConnected");
+        /*Disposable subscribe = Observable.just(performGlobalAction(GLOBAL_ACTION_BACK))
+                .delay(DELAY_PAGE, TimeUnit.MILLISECONDS)
+                .map(new Function<Boolean, Boolean>() {
+                    @Override
+                    public Boolean apply(Boolean aBoolean) throws Exception {
+                        return performGlobalAction(GLOBAL_ACTION_BACK);
+                    }
+                }).delay(DELAY_PAGE, TimeUnit.MILLISECONDS)
+                .subscribe(aBoolean -> performGlobalAction(GLOBAL_ACTION_BACK));*/
     }
 
     @Override

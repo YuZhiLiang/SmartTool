@@ -6,31 +6,43 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.zhiliang.smarttool.DataBean.MainFunction;
+import com.zhiliang.smarttool.DataBean.FunctionBean;
 import com.zhiliang.smarttool.R;
+import com.zhiliang.smarttool.agent.CommonListener;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainFunctionAdapter extends RecyclerView.Adapter<MainFunctionAdapter.MainFunctionVH> {
+public class FunctionAdapter extends RecyclerView.Adapter<FunctionAdapter.MainFunctionVH> {
     private LayoutInflater mLayoutInflater;
-    private List<MainFunction> mList;
+    private List<FunctionBean> mList;
+    private CommonListener<FunctionBean> mListener;
 
-    public MainFunctionAdapter() {
+    public FunctionAdapter() {
     }
 
-    public MainFunctionAdapter(List<MainFunction> list) {
+    public FunctionAdapter(List<FunctionBean> list) {
         mList = list;
     }
 
-    public List<MainFunction> getList() {
+    public List<FunctionBean> getList() {
         return mList;
     }
 
-    public void setList(List<MainFunction> list) {
+    public FunctionAdapter setList(List<FunctionBean> list) {
         mList = list;
+        return this;
+    }
+
+    public CommonListener<FunctionBean> getListener() {
+        return mListener;
+    }
+
+    public FunctionAdapter setListener(CommonListener<FunctionBean> listener) {
+        mListener = listener;
+        return this;
     }
 
     @NonNull
@@ -44,9 +56,15 @@ public class MainFunctionAdapter extends RecyclerView.Adapter<MainFunctionAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MainFunctionVH holder, int position) {
-        MainFunction mainFunction = mList.get(position);
-        holder.getTextView().setText(mainFunction.getnName());
-        holder.getTextView().setOnClickListener(view -> ARouter.getInstance().build(mainFunction.getPath()).navigation());
+        FunctionBean functionBean = mList.get(position);
+        holder.getTextView().setText(functionBean.getName());
+        holder.getTextView().setOnClickListener(view -> {
+            if (functionBean.getProcessMode() == FunctionBean.sProcessMode_Route) {
+                ARouter.getInstance().build(functionBean.getPath()).navigation();
+            } else {
+                if (mListener != null) mListener.onExecutive(functionBean);
+            }
+        });
     }
 
     @Override

@@ -91,5 +91,12 @@
 
     <string name="chat_remind_des">辅助消息提醒</string>
     <string name="tencent_mm_package_name">com.tencent.mm</string>
+    <string name="android_setting_package_name">com.android.settings</string>
     <string name="group_name">remind</string>
+    <string name="accessibility_service_has_open">易用性服务已打开</string>
+
+    <string-array name="accessibility_service_concerned_pkg_name">
+        <item>@string/tencent_mm_package_name</item>
+        <item>@string/android_setting_package_name</item>
+    </string-array>
 </resources>

@@ -4,6 +4,6 @@
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagDefault"
     android:canRetrieveWindowContent="true"
-    android:packageNames="@string/tencent_mm_package_name"
     android:description="@string/chat_remind_des"
-    android:notificationTimeout="100"/>
+    android:notificationTimeout="100"
+    android:packageNames="@array/accessibility_service_concerned_pkg_name" />
