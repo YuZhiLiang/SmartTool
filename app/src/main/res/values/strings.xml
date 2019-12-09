@@ -63,7 +63,7 @@
         <item>3</item>
     </string-array>
 
-    <string-array name="multi_select_list_preference_default_value"/>
+    <string-array name="multi_select_list_preference_default_value" />
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
@@ -87,4 +87,9 @@
 
     <string name="pref_title_vibrate">震动</string>
     <string name="confrim">确定</string>
+
+
+    <string name="chat_remind_des">辅助消息提醒</string>
+    <string name="tencent_mm_package_name">com.tencent.mm</string>
+    <string name="group_name">remind</string>
 </resources>

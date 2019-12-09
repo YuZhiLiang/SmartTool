@@ -10,6 +10,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.zhiliang.smarttool.battery.BatteryChangedAndScreenReceiver;
+import com.zhiliang.smarttool.battery.BatteryRemindSettingsActivity;
 import com.zhiliang.smarttool.util.NotificationHelp;
 
 import androidx.annotation.Nullable;
@@ -36,7 +38,7 @@ public class BackGroundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Intent intent2 = new Intent(this, SettingsActivity.class);
+        Intent intent2 = new Intent(this, BatteryRemindSettingsActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent2, 0);
         NotificationHelp.creatBackGroundLiveNotification();//创建通道
         Notification notification = new NotificationCompat.Builder(this, NotificationHelp.BACK_GROUND_CHANNEL_ID)

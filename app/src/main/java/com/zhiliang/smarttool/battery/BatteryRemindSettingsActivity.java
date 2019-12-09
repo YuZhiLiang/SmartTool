@@ -1,4 +1,4 @@
-package com.zhiliang.smarttool;
+package com.zhiliang.smarttool.battery;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -18,6 +18,12 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.zhiliang.smarttool.AppCompatPreferenceActivity;
+import com.zhiliang.smarttool.BackGroundService;
+import com.zhiliang.smarttool.Constant;
+import com.zhiliang.smarttool.R;
+
 import java.util.List;
 
 import androidx.appcompat.app.ActionBar;
@@ -33,7 +39,8 @@ import androidx.appcompat.app.ActionBar;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends AppCompatPreferenceActivity {
+@Route(path = Constant.PATH_BATTERY_REMIND_MAIN_PAGE)
+public class BatteryRemindSettingsActivity extends AppCompatPreferenceActivity {
     public static final String S_REMINDER_MODE_KEY = "low_battery_reminder_mode";
     public static final int S_REMINDER_MODE_DIALOG = 0;//弹窗方式提醒
     public static final int S_REMINDER_MODE_TOAST = 1;//吐司提醒
@@ -190,7 +197,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
             if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                startActivity(new Intent(getActivity(), BatteryRemindSettingsActivity.class));
                 return true;
             }
             return super.onOptionsItemSelected(item);
@@ -220,7 +227,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
             if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                startActivity(new Intent(getActivity(), BatteryRemindSettingsActivity.class));
                 return true;
             }
             return super.onOptionsItemSelected(item);
@@ -250,7 +257,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
             if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                startActivity(new Intent(getActivity(), BatteryRemindSettingsActivity.class));
                 return true;
             }
             return super.onOptionsItemSelected(item);

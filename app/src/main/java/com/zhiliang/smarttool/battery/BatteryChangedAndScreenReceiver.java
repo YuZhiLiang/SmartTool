@@ -1,4 +1,4 @@
-package com.zhiliang.smarttool;
+package com.zhiliang.smarttool.battery;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.BatteryManager;
 import android.os.Vibrator;
 
+import com.zhiliang.smarttool.R;
+import com.zhiliang.smarttool.STApplication;
 import com.zhiliang.smarttool.util.SPUtil;
 import com.zhiliang.smarttool.util.ToastUtil;
 

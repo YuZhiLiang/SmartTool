@@ -3,7 +3,9 @@ package com.zhiliang.smarttool.publicpage;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhiliang.smarttool.DataBean.MainFunction;
 import com.zhiliang.smarttool.R;
 
@@ -35,14 +37,16 @@ public class MainFunctionAdapter extends RecyclerView.Adapter<MainFunctionAdapte
     @Override
     public MainFunctionVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (mLayoutInflater == null) {
-            LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+            mLayoutInflater = LayoutInflater.from(parent.getContext());
         }
         return new MainFunctionVH(mLayoutInflater.inflate(R.layout.main_function_item_layout, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MainFunctionVH holder, int position) {
-
+        MainFunction mainFunction = mList.get(position);
+        holder.getTextView().setText(mainFunction.getnName());
+        holder.getTextView().setOnClickListener(view -> ARouter.getInstance().build(mainFunction.getPath()).navigation());
     }
 
     @Override
@@ -51,9 +55,15 @@ public class MainFunctionAdapter extends RecyclerView.Adapter<MainFunctionAdapte
     }
 
     public static class MainFunctionVH extends RecyclerView.ViewHolder {
+        private TextView mTextView;
 
         public MainFunctionVH(@NonNull View itemView) {
             super(itemView);
+            mTextView = (TextView) itemView;
+        }
+
+        public TextView getTextView() {
+            return mTextView;
         }
     }
 }
