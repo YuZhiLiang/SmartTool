@@ -38,7 +38,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
             String stringValue = value.toString();
 
             if (preference instanceof ListPreference) {
-                // For list preferences, look up the correct display value in
+                // For list pre_battery_remind, look up the correct display value in
                 // the preference's 'entries' list.
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
@@ -50,7 +50,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
                                 : null);
 
             } else {
-                // For all other preferences, set the summary to the value's
+                // For all other pre_battery_remind, set the summary to the value's
                 // simple string representation.
                 preference.setSummary(stringValue);
             }
@@ -125,25 +125,8 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
         return true;
     }
 
-    public static class BatteryRemindMianFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            setPreferencesFromResource(R.xml.preferences, rootKey);
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), BatteryRemindSettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
     /**
-     * This fragment shows general preferences only. It is used when the
+     * This fragment shows general pre_battery_remind only. It is used when the
      * activity is showing a two-pane settings UI.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -153,7 +136,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
+            // Bind the summaries of EditText/List/Dialog/Ringtone pre_battery_remind
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
@@ -173,7 +156,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
     }
 
     /**
-     * This fragment shows notification preferences only. It is used when the
+     * This fragment shows notification pre_battery_remind only. It is used when the
      * activity is showing a two-pane settings UI.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -183,7 +166,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
             addPreferencesFromResource(R.xml.pref_low_battery);
             setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
+            // Bind the summaries of EditText/List/Dialog/Ringtone pre_battery_remind
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
@@ -202,7 +185,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
     }
 
     /**
-     * This fragment shows data and sync preferences only. It is used when the
+     * This fragment shows data and sync pre_battery_remind only. It is used when the
      * activity is showing a two-pane settings UI.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -212,7 +195,7 @@ public class BatteryRemindSettingsActivity extends AppCompatActivity implements 
             addPreferencesFromResource(R.xml.pref_data_sync);
             setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
+            // Bind the summaries of EditText/List/Dialog/Ringtone pre_battery_remind
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.

@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:fragment="com.zhiliang.smarttool.battery.BatteryRemindSettingsActivity$LowBatteryRemindPreferenceFragment">
 
-    <!-- A 'parent' preference, which enables/disables child preferences (below)
+    <!-- A 'parent' preference, which enables/disables child pre_battery_remind (below)
          when checked/unchecked. -->
     <SwitchPreference
         app:defaultValue="true"

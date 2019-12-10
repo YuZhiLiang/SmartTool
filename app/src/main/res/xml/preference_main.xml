@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        app:fragment="com.zhiliang.smarttool.battery.BatteryRemindMianFragment"
+        app:key="battery_remind"
+        app:title="@string/pref_title_low_battery_remind" />
+    <Preference
+        app:fragment="com.zhiliang.smarttool.chat.remind.ChatRemindSettingFragment"
+        app:key="battery_remind"
+        app:title="@string/chat_remind" />
+</PreferenceScreen>

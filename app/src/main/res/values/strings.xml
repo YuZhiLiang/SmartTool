@@ -89,6 +89,7 @@
     <string name="confrim">确定</string>
 
 
+    <string name="chat_remind">消息提醒</string>
     <string name="chat_remind_des">辅助消息提醒</string>
     <string name="tencent_mm_package_name">com.tencent.mm</string>
     <string name="android_setting_package_name">com.android.settings</string>
