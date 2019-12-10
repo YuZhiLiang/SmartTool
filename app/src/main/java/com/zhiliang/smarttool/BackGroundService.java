@@ -40,7 +40,7 @@ public class BackGroundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Intent intent2 = new Intent(this, BatteryRemindSettingsActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent2, 0);
-        NotificationHelp.creatBackGroundLiveNotification();//创建通道
+        NotificationHelp.createBackGroundLiveNotification();//创建通道
         Notification notification = new NotificationCompat.Builder(this, NotificationHelp.BACK_GROUND_CHANNEL_ID)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(R.string.smart_tool_above_ground))

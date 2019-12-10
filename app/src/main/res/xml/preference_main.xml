@@ -7,6 +7,6 @@
         app:title="@string/pref_title_low_battery_remind" />
     <Preference
         app:fragment="com.zhiliang.smarttool.chat.remind.ChatRemindSettingFragment"
-        app:key="battery_remind"
+        app:key="chat_remind"
         app:title="@string/chat_remind" />
 </PreferenceScreen>

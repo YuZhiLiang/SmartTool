@@ -11,7 +11,7 @@ package com.zhiliang.smarttool.util;
  */
 
 
-import android.util.Log;
+/*import android.util.Log;
 
 import com.zhiliang.smarttool.BuildConfig;
 
@@ -40,10 +40,10 @@ public class MyLogger {
         mClassName = name;
     }
 
-    /**
+    *//**
      * @param className
      * @return
-     */
+     *//*
     @SuppressWarnings("unused")
     private static MyLogger getLogger(String className) {
         MyLogger classLogger = (MyLogger) sLoggerTable.get(className);
@@ -62,11 +62,11 @@ public class MyLogger {
     }
 
 
-    /**
+    *//**
      * Get The Current Function Name
      *
      * @return
-     */
+     *//*
     private String getFunctionName() {
         StackTraceElement[] sts = Thread.currentThread().getStackTrace();
         if (sts == null) {
@@ -89,11 +89,11 @@ public class MyLogger {
         return null;
     }
 
-    /**
+    *//**
      * The Log Level:i
      *
      * @param str
-     */
+     *//*
     public void i(Object str) {
         if (logFlag) {
             if (logLevel <= Log.INFO) {
@@ -110,11 +110,11 @@ public class MyLogger {
 
     }
 
-    /**
+    *//**
      * The Log Level:d
      *
      * @param str
-     */
+     *//*
     public void d(Object str) {
         if (logFlag) {
             if (logLevel <= Log.DEBUG) {
@@ -130,11 +130,11 @@ public class MyLogger {
         }
     }
 
-    /**
+    *//**
      * The Log Level:V
      *
      * @param str
-     */
+     *//*
     public void v(Object str) {
         if (logFlag) {
             if (logLevel <= Log.VERBOSE) {
@@ -150,11 +150,11 @@ public class MyLogger {
         }
     }
 
-    /**
+    *//**
      * The Log Level:w
      *
      * @param str
-     */
+     *//*
     public void w(Object str) {
         if (logFlag) {
             if (logLevel <= Log.WARN) {
@@ -170,11 +170,11 @@ public class MyLogger {
         }
     }
 
-    /**
+    *//**
      * The Log Level:e
      *
      * @param str
-     */
+     *//*
     public void e(Object str) {
         if (logFlag) {
             if (logLevel <= Log.ERROR) {
@@ -190,11 +190,11 @@ public class MyLogger {
         }
     }
 
-    /**
+    *//**
      * The Log Level:e
      *
      * @param ex
-     */
+     *//*
     public void e(Exception ex) {
         if (logFlag) {
             if (logLevel <= Log.ERROR) {
@@ -203,12 +203,12 @@ public class MyLogger {
         }
     }
 
-    /**
+    *//**
      * The Log Level:e
      *
      * @param log
      * @param tr
-     */
+     *//*
     public void e(String log, Throwable tr) {
         if (logFlag) {
             String line = getFunctionName();
@@ -217,14 +217,14 @@ public class MyLogger {
         }
     }
 
-    /***
+    *//***
      *
      * printLog:因为logcat输出log的字符长度是4k，超过长度字符串会被丢弃，所以对超过4k长度的log做分段输出. <br/>
      *
      * @author mozk
      * @param level
      * @param logText
-     */
+     *//*
     public void printLog(int level, String logText) {
         int index = 0;
         String sub;
@@ -264,5 +264,5 @@ public class MyLogger {
         }
     }
 
-}
+}*/
 

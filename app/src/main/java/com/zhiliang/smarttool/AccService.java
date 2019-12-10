@@ -1,6 +1,7 @@
 package com.zhiliang.smarttool;
 
 import android.accessibilityservice.AccessibilityService;
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,7 +10,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.zhiliang.smarttool.publicpage.MainActivity;
 import com.zhiliang.smarttool.util.AccessibilityUtil;
-import com.zhiliang.smarttool.util.MyLogger;
 import com.zhiliang.smarttool.util.SPUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -28,15 +27,28 @@ import io.reactivex.disposables.Disposable;
 public class AccService extends AccessibilityService {
     private final String TAG = AccService.class.getSimpleName();
     private static final int DELAY_PAGE = 320; // 页面切换时间
-    private final Handler mHandler = new Handler();
     public static final String mContentDescriptionKey = "ContentDescriptionKey";
     private NotificationManager mNotifyManager;
-    private static final String sLastRemindTimeKey = "last_remind_time";
     private Disposable mSubscribe;
+    private Disposable mDoActionBackSubscribe;
     private String mChannelId = "SmartTool001";
     private String mChannelName = "ChatRemind";
+    private long mServiceConnectTimeStamp = 0;
+    public static boolean sActionBack = false;
+    private static Disposable sActionBackDisposable;
 
-    public AccService() {
+    public static void setActionBack(boolean actionBack) {
+        sActionBack = actionBack;
+        if (sActionBack) {
+            if (sActionBackDisposable != null && !sActionBackDisposable.isDisposed()) {
+                sActionBackDisposable.dispose();
+            }
+            sActionBackDisposable = Observable.timer(5, TimeUnit.MINUTES).subscribe(aLong -> sActionBack = false);
+        } else {
+            if (sActionBackDisposable != null && !sActionBackDisposable.isDisposed()) {
+                sActionBackDisposable.dispose();
+            }
+        }
     }
 
     @Override
@@ -59,10 +71,6 @@ public class AccService extends AccessibilityService {
                             .contains(SPUtil.getINSTANCE().getString(mContentDescriptionKey, "当前所在页面,与今天打卡了吗❔（36D小\uD83D\uDC37 \uD83D\uDC37 ）的聊天"))) {
                         Log.e("yzl", "就是这个页面！");
                         mNotifyManager.cancelAll();
-                        mHandler.removeCallbacksAndMessages(null);
-                        if (mSubscribe != null && !mSubscribe.isDisposed()) {
-                            mSubscribe.dispose();
-                        }
                         mSubscribe = Observable.timer(10, TimeUnit.SECONDS)
                                 .subscribe(aLone -> {
                                     not();
@@ -71,9 +79,39 @@ public class AccService extends AccessibilityService {
                 }
             }
 
+            back2AppPage(event);
+
             Log.e("yzl", event.toString());
         } else {
             Log.e("yzl", "event is null");
+        }
+    }
+
+    /**
+     * 模拟返回键回到App页面
+     *
+     * @param event
+     */
+    @SuppressLint("CheckResult")
+    private void back2AppPage(AccessibilityEvent event) {
+        if (mServiceConnectTimeStamp > 0) {
+            if (System.currentTimeMillis() - mServiceConnectTimeStamp <= 1000) {
+                mServiceConnectTimeStamp = 0;
+                if (!sActionBack) return;
+                if (mDoActionBackSubscribe != null && !mDoActionBackSubscribe.isDisposed()) return;
+                if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED
+                        && event.getContentChangeTypes() == AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE
+                        && event.getPackageName().equals(getString(R.string.android_setting_package_name))) {
+                    mDoActionBackSubscribe = Observable.just(performGlobalAction(GLOBAL_ACTION_BACK))
+                            .delay(DELAY_PAGE, TimeUnit.MILLISECONDS)
+                            .map((aBoolean -> {
+                                return performGlobalAction(GLOBAL_ACTION_BACK);
+                            })).delay(DELAY_PAGE, TimeUnit.MILLISECONDS)
+                            .subscribe(aBoolean -> performGlobalAction(GLOBAL_ACTION_BACK));
+                }
+            } else {
+                mServiceConnectTimeStamp = 0;
+            }
         }
     }
 
@@ -84,32 +122,15 @@ public class AccService extends AccessibilityService {
 
     @Override
     protected void onServiceConnected() {
+        mServiceConnectTimeStamp = System.currentTimeMillis();
         Log.i(TAG, "onServiceConnected: ");
-        Toast.makeText(this, getString(R.string.chat_remind_des) + "开启了", Toast.LENGTH_LONG).show();
-        // 服务开启，模拟两次返回键，退出系统设置界面（实际上还应该检查当前UI是否为系统设置界面，但一想到有些厂商可能篡改设置界面，懒得适配了...）
-        /*performGlobalAction(GLOBAL_ACTION_BACK);
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                performGlobalAction(GLOBAL_ACTION_BACK);
-            }
-        }, DELAY_PAGE);*/
-        MyLogger.yLog().w("onServiceConnected");
-        /*Disposable subscribe = Observable.just(performGlobalAction(GLOBAL_ACTION_BACK))
-                .delay(DELAY_PAGE, TimeUnit.MILLISECONDS)
-                .map(new Function<Boolean, Boolean>() {
-                    @Override
-                    public Boolean apply(Boolean aBoolean) throws Exception {
-                        return performGlobalAction(GLOBAL_ACTION_BACK);
-                    }
-                }).delay(DELAY_PAGE, TimeUnit.MILLISECONDS)
-                .subscribe(aBoolean -> performGlobalAction(GLOBAL_ACTION_BACK));*/
+        Toast.makeText(this, getString(R.string.chat_remind) + "开启了", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onDestroy() {
         Log.i(TAG, "onDestroy: ");
-        Toast.makeText(this, getString(R.string.chat_remind_des) + "停止了，请重新开启", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.chat_remind) + "停止了，请重新开启", Toast.LENGTH_LONG).show();
         // 服务停止，重新进入系统设置界面
         AccessibilityUtil.jumpToSetting(this);
     }
@@ -137,10 +158,6 @@ public class AccService extends AccessibilityService {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             builder.setChannelId(mChannelId);
         }
-       /*Notification.DEFAULT_VIBRATE  //添加默认震动提醒 需要VIBRATE permission
-       Notification.DEFAULT_SOUND  //添加默认声音提醒
-       Notification.DEFAULT_LIGHTS//添加默认三色灯提醒
-       Notification.DEFAULT_ALL//添加默认以上3种全部提醒*/
         //.setLights(Color.YELLOW, 300, 0)//单独设置呼吸灯，一般三种颜色：红，绿，蓝，经测试，小米支持黄色
         //.setSound(url)//单独设置声音
         //.setVibrate(new long[] { 100, 250, 100, 250, 100, 250 })//单独设置震动

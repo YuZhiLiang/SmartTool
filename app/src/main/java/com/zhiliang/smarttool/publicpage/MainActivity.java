@@ -24,14 +24,6 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         startService(new Intent(this, BackGroundService.class));
-        /*FunctionAdapter mainFunctionAdapter = new FunctionAdapter();
-        ArrayList<FunctionBean> functionBeans = new ArrayList<>();
-        functionBeans.add(new FunctionBean("电量提醒", Constant.PATH_BATTERY_REMIND_MAIN_PAGE));
-        functionBeans.add(new FunctionBean("消息提醒", Constant.PATH_CHAT_REMIND_MAIN_PAGE));
-        mainFunctionAdapter.setList(functionBeans);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mBinding.recyclerView.setLayoutManager(layoutManager);
-        mBinding.recyclerView.setAdapter(mainFunctionAdapter);*/
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout, new MainFragment())

@@ -15,7 +15,7 @@ public class NotificationHelp {
     public static final String BACK_GROUND_CHANNEL_ID = "com.zhiliang.smarttool.background.live";
     private static final String BACK_GROUND_CHANNEL_NAME = "保活通道";
 
-    public static void creatBackGroundLiveNotification() {
+    public static void createBackGroundLiveNotification() {
         NotificationManager notificationManager = (NotificationManager) STApplication.getInstance().getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && notificationManager != null) {
             notificationManager.createNotificationChannel(getBackGroundLiveChanel());

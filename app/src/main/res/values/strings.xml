@@ -3,11 +3,44 @@
     <string name="back_ground_live_channel_des">SmartTool的保活通知，关闭此通知SmartTool将无法正常使用</string>
     <string name="smart_tool_above_ground">SmartTool正在运行</string>
     <string name="low_battery_go_charge">电量过低,赶紧充电</string>
+    <string name="low_battery_remind">低电量提醒</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="chat_remind">消息提醒</string>
+    <string name="vibrate">震动</string>
+    <string name="sound">声音</string>
+    <string name="chat_remind_des">当超过指定时间未与指定用户聊天时提醒你</string>
+    <string name="chat_remind_open_accessibility_service_tips">开启消息提醒需要打开无障碍服务，请在设置中找到SmartTool并打开相应功能</string>
+    <string name="tencent_mm_package_name">com.tencent.mm</string>
+    <string name="android_setting_package_name">com.android.settings</string>
+    <string name="group_name">remind</string>
+    <string name="open_accessibility_service">开启辅助服务</string>
+    <string name="accessibility_service_has_open">辅助服务已开启</string>
+    <string name="remind_mode">提醒方式</string>
+    <string name="go_to">前往</string>
+    <string name="not_for_the_time_being">暂不</string>
 
-    <!-- Strings related to Settings -->
+    <!--  Dialog Button Start  -->
+    <string name="accessibility_open_dialog_positive_text">@string/go_to</string>
+    <string name="accessibility_open_dialog_negative_text">@string/not_for_the_time_being</string>
+    <!--  Dialog Button End  -->
+    <string-array name="accessibility_service_concerned_pkg_name">
+        <item>@string/tencent_mm_package_name</item>
+        <item>@string/android_setting_package_name</item>
+    </string-array>
 
-    <!-- Example General settings -->
+    <!--    pref start-->
+    <string name="pref_key_open_accessibility_service">@string/open_accessibility_service</string>
+
+    <string name="pref_key_chat_remind">@string/chat_remind</string>
+    <string name="pref_title_chat_remind">@string/chat_remind</string>
+    <string name="pref_summary_chat_remind">@string/chat_remind_des</string>
+
+    <string name="pref_key_chat_remind_vibrate">@string/vibrate</string>
+    <string name="pref_title_chat_remind_vibrate">@string/vibrate</string>
+
+    <string name="pref_key_chat_remind_sound">@string/sound</string>
+    <string name="pref_title_chat_remind_sound">@string/sound</string>
+
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
@@ -68,10 +101,9 @@
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_low_battery_remind">低电量提醒</string>
-
-    <string name="pref_title_low_battery_remind">低电量提醒</string>
-    <string name="pref_title_low_battery_remind_mode">提醒方式</string>
+    <string name="pref_header_low_battery_remind">@string/low_battery_remind</string>
+    <string name="pref_title_low_battery_remind">@string/low_battery_remind</string>
+    <string name="pref_title_low_battery_remind_mode">@string/remind_mode</string>
 
     <string-array name="pref_low_battery_remind_mode_titles">
         <item>弹窗提醒</item>
@@ -87,17 +119,5 @@
 
     <string name="pref_title_vibrate">震动</string>
     <string name="confrim">确定</string>
-
-
-    <string name="chat_remind">消息提醒</string>
-    <string name="chat_remind_des">辅助消息提醒</string>
-    <string name="tencent_mm_package_name">com.tencent.mm</string>
-    <string name="android_setting_package_name">com.android.settings</string>
-    <string name="group_name">remind</string>
-    <string name="accessibility_service_has_open">易用性服务已打开</string>
-
-    <string-array name="accessibility_service_concerned_pkg_name">
-        <item>@string/tencent_mm_package_name</item>
-        <item>@string/android_setting_package_name</item>
-    </string-array>
+    <!--    pref end-->
 </resources>

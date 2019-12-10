@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreferenceCompat
+        app:key="@string/pref_key_chat_remind"
+        app:summary="@string/pref_summary_chat_remind"
+        app:title="@string/pref_title_chat_remind" />
+    <SwitchPreferenceCompat
+        android:dependency="@string/chat_remind"
+        app:key="@string/pref_key_chat_remind_vibrate"
+        app:title="@string/pref_title_chat_remind_vibrate" />
+    <SwitchPreferenceCompat
+        android:dependency="@string/chat_remind"
+        app:key="@string/pref_key_chat_remind_sound"
+        app:title="@string/pref_title_chat_remind_sound" />
     <Preference
-        app:key="@string/chat_remind"
-        app:title="@string/chat_remind" />
+        android:dependency="@string/chat_remind"
+        app:key="@string/pref_key_open_accessibility_service"
+        app:title="@string/open_accessibility_service" />
 </PreferenceScreen>
