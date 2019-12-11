@@ -71,7 +71,8 @@ public class AccService extends AccessibilityService {
                             .contains(SPUtil.getINSTANCE().getString(mContentDescriptionKey, "当前所在页面,与今天打卡了吗❔（36D小\uD83D\uDC37 \uD83D\uDC37 ）的聊天"))) {
                         Log.e("yzl", "就是这个页面！");
                         mNotifyManager.cancelAll();
-                        mSubscribe = Observable.timer(10, TimeUnit.SECONDS)
+                        if (mSubscribe != null && !mSubscribe.isDisposed()) mSubscribe.dispose();
+                        mSubscribe = Observable.timer(10, TimeUnit.MINUTES)
                                 .subscribe(aLone -> {
                                     not();
                                 });
